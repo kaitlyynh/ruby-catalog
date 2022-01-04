@@ -1,0 +1,24 @@
+target_word = "water"
+array_of_misses = Array[]
+num_of_guesses = 20
+array_of_corrects = Array[]
+game_over = false
+while num_of_guesses != 0 and !game_over
+  puts "Guess: "
+  user_guess = gets.chomp.to_s
+  if target_word.include? (user_guess) and user_guess.length.eql? 1
+    array_of_corrects.append(user_guess)
+    puts "You got a letter!"
+    puts (array_of_corrects)
+  elsif !target_word.include? (user_guess)
+    array_of_misses.append(user_guess)
+    num_of_guesses -= 1
+    puts ("1 Life Lost: " + num_of_guesses.to_s + " guesses left.")
+  elsif user_guess.length > 1
+    puts "Please enter one character at a time."
+  elsif array_of_corrects.length.eql? target_word.length
+    game_over = true
+    puts "You won, with " + num_of_guesses.to_s + " lives remaining."
+  end
+  
+end
