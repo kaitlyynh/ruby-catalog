@@ -1,0 +1,61 @@
+class Shirt
+    def initialize(color, price)
+        @color = color
+        @price = price
+    end
+    def get_price
+        return @price
+    end 
+    def get_color
+        return @color
+    end
+end
+class Pants
+    def initialize(color, price)
+        @color = color
+        @price = price
+    end
+    def get_price
+        return @price
+    end 
+    def get_color
+        return @color
+    end
+end
+shopping_catalog = {}
+def add_item(shopping_catalog)
+  puts "Press 'S' for shirt, 'P' for pants, 'q' to quit: "
+  user_answer = gets.chomp.to_s
+  if user_answer.eql? ('S')
+    puts 'Enter color: '
+    shirt_color = gets.chomp.to_s
+    puts 'Enter price: '
+    shirt_price = gets.chomp.to_s
+    new_shirt = Shirt.new(shirt_color, shirt_price)
+    shopping_catalog[new_shirt.get_color] = new_shirt.get_price
+  elsif user_answer.eql? ('P')
+    puts 'Enter color: '
+    pants_color = gets.chomp.to_s
+    puts 'Enter price: '
+    pants_price = gets.chomp.to_s
+    new_pants = Pants.new(pants_color, pants_price)
+    shopping_catalog[new_pants.get_color] = new_pants.get_price
+  elsif user_answer.eql? ('q')
+    puts 'Goodbye.'
+    puts shopping_catalog
+    return 'off'
+  end
+end
+answer = 'string'
+program_on = false
+puts 'Welcome to the Catalog, would you like to add items? (Y/N)'
+answer = gets.chomp.to_s
+if answer.eql? ('Y')
+  program_on = true
+end
+  while program_on
+    add_item(shopping_catalog)
+    if add_item(shopping_catalog).eql? ('off')
+      program_on = false
+    end
+    end
